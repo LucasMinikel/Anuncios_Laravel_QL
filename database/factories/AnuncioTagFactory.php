@@ -17,7 +17,7 @@ class AnuncioTagFactory extends Factory
     {
         return [
             'anuncio_id' => Anuncio::find(rand(1, 10)),
-            'tag_id' => Tag::find(rand(1, 10)),
+            'tag_id' => Tag::find(rand(1, 10))
         ];
     }
 }

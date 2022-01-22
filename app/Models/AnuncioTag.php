@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AnuncioTag extends Model
 {
+    protected $table = 'anuncio_tag';
     use HasFactory;
 }

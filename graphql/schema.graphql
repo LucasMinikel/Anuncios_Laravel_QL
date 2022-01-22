@@ -7,16 +7,15 @@ type Query {
     users(
       name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 5)
-
-
     tag(
       id: ID @eq 
       slug: String @eq
     ): Tag @find
-
     tags(
       titulo: String @where(operator: "like")
     ): [Tag!]! @all
+
+    anuncios: [Anuncio!]! @all
 }
 
 type User {
@@ -32,4 +31,19 @@ type Tag {
     id: ID!
     titulo: String!
     slug: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Anuncio {
+    id: ID!
+    
+    anuncio_titulo: String!
+    anuncio_local: String!
+    anuncio_link: String!
+    anuncio_empresa: String!
+    anuncio_logo: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    tags: [Tag!]! @belongsToMany
 }

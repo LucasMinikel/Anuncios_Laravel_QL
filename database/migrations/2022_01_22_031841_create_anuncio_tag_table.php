@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnuncioTagsTable extends Migration
+class CreateAnuncioTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAnuncioTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('anuncio_tags', function (Blueprint $table) {
+        Schema::create('anuncio_tag', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anuncio_id')->constrained()->onDelete('cascade');
             $table->foreignId('tag_id')->constrained()->onDelete('cascade');
@@ -28,6 +28,6 @@ class CreateAnuncioTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anuncio_tags');
+        Schema::dropIfExists('anuncio_tag');
     }
 }
