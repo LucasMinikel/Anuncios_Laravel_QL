@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Tag as ModelsTag;
+use App\Models\Anuncio;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
-        ModelsTag::factory(10)->create();
+        Tag::factory(10)->create();
+        Anuncio::factory(10)->create();
     }
 }
