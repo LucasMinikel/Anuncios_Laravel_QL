@@ -15,7 +15,7 @@ type Query {
       titulo: String @where(operator: "like")
     ): [Tag!]! @all
 
-    anuncios: [Anuncio!]! @all
+    anuncios(orderBy: _ @orderBy(columns:["created_at","anuncio_titulo"])): [Anuncio!]! @all
 }
 
 type User {
