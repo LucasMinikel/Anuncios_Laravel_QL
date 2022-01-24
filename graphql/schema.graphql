@@ -46,4 +46,6 @@ type Anuncio {
     created_at: DateTime!
     updated_at: DateTime!
     tags: [Tag!]! @belongsToMany
+    user: User! @belongsTo
+    teste
 }
