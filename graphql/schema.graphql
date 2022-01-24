@@ -47,5 +47,4 @@ type Anuncio {
     updated_at: DateTime!
     tags: [Tag!]! @belongsToMany
     user: User! @belongsTo
-    teste
 }
