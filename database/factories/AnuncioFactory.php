@@ -16,11 +16,11 @@ class AnuncioFactory extends Factory
     {
         return [
             'user_id' => User::find(rand(1, 10)),
-            'anuncio_titulo' => $this->faker->word(),
-            'anuncio_local' => $this->faker->sentence(),
+            'anuncio_titulo' => $this->faker->title(),
+            'anuncio_local' => $this->faker->streetAddress(),
             'anuncio_link' => $this->faker->url(),
-            'anuncio_empresa' => $this->faker->word(),
-            'anuncio_logo' => $this->faker->url(),
+            'anuncio_empresa' => $this->faker->company(),
+            'anuncio_logo' => $this->faker->imageUrl(),
         ];
     }
 }
