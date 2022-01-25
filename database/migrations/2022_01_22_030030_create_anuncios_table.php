@@ -21,6 +21,8 @@ class CreateAnunciosTable extends Migration
             $table->string('anuncio_link');
             $table->string('anuncio_empresa');
             $table->string('anuncio_logo');
+            $table->boolean('anuncio_marcado')->default(false);
+            $table->boolean('anuncio_favorito')->default(false);
             $table->timestamps();
         });
     }

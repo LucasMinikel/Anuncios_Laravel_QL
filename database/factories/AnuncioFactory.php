@@ -21,6 +21,8 @@ class AnuncioFactory extends Factory
             'anuncio_link' => $this->faker->url(),
             'anuncio_empresa' => $this->faker->company(),
             'anuncio_logo' => $this->faker->imageUrl(),
+            'anuncio_marcado' => rand(0, 1),
+            'anuncio_favorito' => rand(0, 1),
         ];
     }
 }

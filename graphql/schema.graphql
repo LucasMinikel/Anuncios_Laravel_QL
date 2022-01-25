@@ -16,7 +16,7 @@ type Query {
     ): [Tag!]! @all
 
     anuncios(
-      orderBy: _ @orderBy(columns:["created_at","anuncio_titulo"])
+      orderBy: _ @orderBy(columns:["created_at","anuncio_favorito"])
       hasTags: _ @whereHasConditions(columns: ["slug"])
       ): [Anuncio!]! @all
 }
@@ -40,12 +40,13 @@ type Tag {
 
 type Anuncio {
     id: ID!
-    
     anuncio_titulo: String!
     anuncio_local: String!
     anuncio_link: String!
     anuncio_empresa: String!
     anuncio_logo: String!
+    anuncio_marcado: Boolean!
+    anuncio_favorito: Boolean!
     created_at: DateTime!
     updated_at: DateTime!
     tags: [Tag!]! @belongsToMany
