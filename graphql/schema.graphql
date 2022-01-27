@@ -31,7 +31,6 @@ type User {
     created_at: DateTime!
     updated_at: DateTime!
     anuncios(orderBy: _ @orderBy(columns:["created_at"])):[Anuncio!]! @hasMany
- 
 }
 
 type Tag {
@@ -55,4 +54,35 @@ type Anuncio {
     updated_at: DateTime!
     tags: [Tag!]! @belongsToMany
     user: User! @belongsTo
+}
+
+
+input CreateUserInput{
+  name: String @rules(apply:["required"])
+  email: String @rules(apply:["required", "email"])
+  password: String @rules(apply:["required", "min:5"]) @hash
+}
+
+input CreateTagsBelongsToMany{
+  connect: [ID!] @rulesForArray(apply:["required"])
+}
+
+input CreateAnuncioInput{
+    anuncio_titulo: String @rules(apply:["required"])
+    anuncio_local: String @rules(apply:["required"])
+    anuncio_link: String @rules(apply:["required", "url"])
+    anuncio_empresa: String @rules(apply:["required"])
+    anuncio_logo: String @rules(apply:["required", "url"])
+    anuncio_marcado: Boolean @rules(apply:["boolean"])
+    anuncio_favorito: Boolean @rules(apply:["boolean"])
+    tags: CreateTagsBelongsToMany!
+}
+
+type Mutation{
+  createUser(input: CreateUserInput! @spread): User! @create
+
+  createAnuncio(input: CreateAnuncioInput! @spread): Anuncio! 
+    @create
+    @guard
+    @inject(context: "user.id", name:"user_id")
 }
